@@ -28,21 +28,27 @@
 <div class="box">44444</div>
 <span>1</span>
 <span>2</span>
-<p>3</p>
+<p>test</p>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li id="li">3</li>
+</ul>
+
 <script src="My-Jquery.js"></script>
 <script>
-    var on = true;
-    $("#div").click(function () {
-        if(on){
-            $("span").hide();
-            $("p").hide();
-        }else{
-            $("span").show();
-            $("p").show();
-        }
-        on = !on;
-
-    });
+//    var on = true;
+//    $("#div").click(function () {
+//        if(on){
+//            $("span").hide();
+//            $("p").hide();
+//        }else{
+//            $("span").show();
+//            $("p").show();
+//        }
+//        on = !on;
+//
+//    });
 //    $("#div").on("click", function () {
 //        alert(1111)
 //    })
@@ -52,8 +58,8 @@
 //    },function(){
 //        this.style.color = "red"
 //    })
-    $("div").css({"color":"#111","background-color":"red"})
-
+//    $("div").css({"color":"#111","background-color":"red"})
+//    $("#div").siblings().css("background-color","red")
 </script>
 </body>
 </html>
