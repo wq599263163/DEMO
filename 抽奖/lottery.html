@@ -61,7 +61,7 @@
 <script src="js/jquery-1.8.3.min.js"></script>
 <script src="js/cookies.js" type="text/javascript" charset="utf-8"></script>
 <script>
-    var session = new Session(); // 进入页面函数
+    var session = new SetCookie(); // 进入页面函数
 	session.init(); // 初始化
 	var luck={
 		index:-1,	//当前转动到哪个位置，起点位置
@@ -233,7 +233,7 @@
 		$("#btn").click(function(){
 //			点击一次删除一个
 //			这里需要调用session.getsum获取有没有次数
-            session.delsum()
+//            session.delsum()
 			//按下弹起效果
 			$("#btn").addClass("cjBtnDom");
 			setTimeout(function(){	
