@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ch-ZN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 div, #div2 div{
+            height:150px;
+            width:250px;
+            border:1px solid #666;
+            display: none;
+            margin-top:30px;
+            margin-bottom:30px;
+            text-align: center;
+            color: blue;
+            line-height: 150px;
+            font-size: 60px;
+        }
+        #div1 button,#div2 button{
+            display: inline-block;
+            width:80px;
+            font-size: 30px;
+        }
+        #div1 button:focus, #div2 button:focus{
+            outline: none;
+        }
+        .active{
+            color: #f2f2f2;
+            background-color: #8b8592;
+        }
+
+    </style>
+</head>
+<body>
+<div id="div1">
+    <button class="active">1</button>
+    <button>2</button>
+    <button>3</button>
+    <div style="display: block">1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<div id="div2">
+    <button class="active">1</button>
+    <button>2</button>
+    <button>3</button>
+    <div style="display: block">1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<script>
+    /**
+     * 原始方法
+     * /
+
+
+
+    /*
+    window.onload = function(){
+        var Div = document.getElementById("div1");
+        var oButton = Div.getElementsByTagName("button");
+        var oDiv = Div.getElementsByTagName("div");
+
+        for(var i = 0; i < oButton.length; i++){
+            oButton[i].index = i;
+            oButton[i].onclick = function(){
+                for(var k = 0; k < oButton.length; k++){
+                    oButton[k].className = "";
+                    oDiv[k].style.display = "none";
+                }
+                this.className = "active"
+                oDiv[this.index].style.display = "block";
+            };
+
+        }
+    }
+    */
+
+    /**
+     * 函数封装
+     * 尽量不要有函数嵌套函数
+     */
+
+    /*
+    var Div = null;
+    var oButton = null;
+    var oDiv = null;
+    window.onload = function(){
+        Div = document.getElementById("div1");
+        oButton = Div.getElementsByTagName("button");
+        oDiv = Div.getElementsByTagName("div");
+        init();
+    }
+
+    function init(){
+        for(var i = 0; i < oButton.length; i++){
+            oButton[i].index = i;
+            oButton[i].onclick = inputClick;
+
+        }
+    }
+    function inputClick(){
+        for(var k = 0; k < oButton.length; k++){
+            oButton[k].className = "";
+            oDiv[k].style.display = "none";
+        }
+        this.className = "active"
+        oDiv[this.index].style.display = "block";
+    }
+    */
+
+
+    /*
+     * 面向对象封转
+     * 全局变量就是属性
+     * 函数就是方法
+     */
+
+    window.onload = function(){
+        var tab = new Tab("div1");
+        tab.init();
+
+        var tab2 = new Tab("div2");
+        tab2.init();
+        tab2.autoPlay();
+    }
+
+    function Tab(id){
+        this.Div = document.getElementById(id);
+        this.oButton = this.Div.getElementsByTagName("button");
+        this.oDiv = this.Div.getElementsByTagName("div");
+        this.index = 0;
+    }
+    // 挂载原型链
+    Tab.prototype.init = function(){
+        var This = this
+        for(var i = 0; i < this.oButton.length; i++){
+            this.oButton[i].index = i;
+            this.oButton[i].onclick = function(){
+                // 修改this指向
+                This.inputClick(this);
+            };
+
+        }
+    }
+    Tab.prototype.inputClick = function (inputThis) {
+        for(var k = 0; k < this.oButton.length; k++){
+            this.oButton[k].className = "";
+            this.oDiv[k].style.display = "none";
+        }
+        // 修正点击过后不跳下一个
+        this.index = inputThis.index;
+
+        inputThis.className = "active"
+        this.oDiv[inputThis.index].style.display = "block";
+    }
+    Tab.prototype.autoPlay = function(){
+        var This = this;
+        setInterval(function(){
+            if(This.index == This.oButton.length - 1){
+                This.index = 0;
+            }else{
+                This.index ++;
+            }
+            for(var k = 0; k < This.oButton.length; k++){
+                This.oButton[k].className = "";
+                This.oDiv[k].style.display = "none";
+            }
+            This.oButton[This.index].className = "active"
+            This.oDiv[This.index].style.display = "block";
+        },2000)
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ch-ZN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    原始方式
+    var obj = new Object();
+    obj.name = "小明"
+    obj.showName = function(){
+        // 目前是obj调用，所以this指向的是obj
+        console.log(this)
+    }
+//    obj.showName()
+
+
+
+//    函数的封装，工厂方式
+    function createObj(name){
+        var obj = new Object();
+        obj.name = name;
+        obj.showName = function(){
+            console.log(this.name)
+        }
+        return obj;
+    }
+    createObj("小明").showName();
+    createObj("小红").showName();
+
+</script>
+</body>
+</html>
