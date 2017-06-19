@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Sheyude</title>
+</head>
+<body>
+<script>
+    var a= {
+        name:"小明"
+    };
+    var b = {};
+    function copyObj(objA, objB){
+        for(var attr in objB){
+            objA[attr] = objB[attr];
+        };
+    };
+    copyObj(b, a);
+    b.name = "小强";
+    console.log(b.name);
+    console.log(a.name);
+
+</script>
+</body>
+</html>
+<!--sheyude-->

@@ -1,18 +1,34 @@
 <!DOCTYPE html>
-<html lang="ch-ZN">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sheyude</title>
 </head>
 <body>
+<table  border="1" id="tab">
+</table>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
-    var str = "1000";
-
-    String.prototype.number = 10;
-
-    console.log(str.number)
-    //
+    var data = {
+        "sites": [
+        { "cinema":"万达电影院" , "date":"2017-7-7 00:00" , "quantity":"9" , "address":"广东省深圳市宝安区" },
+        { "cinema":"中影南方新干线" , "date":"2017-7-7 01:00" , "quantity":"10" , "address":"广东省深圳市罗湖区" },
+        { "cinema":"横店电影院" , "date":"2017-7-7 02:00" , "quantity":"11" , "address":"广东省深圳市盐田区" },
+        { "cinema":"大地电影院" , "date":"2017-7-7 03:00" , "quantity":"12" , "address":"广东省深圳市龙华新区区" },
+        { "cinema":"金逸珠江电影院" , "date":"2017-7-7 04:00" , "quantity":"13" , "address":"广东省深圳市南山区" },
+        { "cinema":"时代电影" , "date":"2017-7-7 05:00" , "quantity":"14" , "address":"广东省深圳市大鹏新区区" },
+        { "cinema":"银星电影院" , "date":"2017-7-7 06:00" , "quantity":"15" , "address":"广东省深圳市龙岗区" },
+        { "cinema":"中影星美院线" , "date":"2017-7-7 07:00" , "quantity":"16" , "address":"广东省深圳市宝安区" }
+    ]
+    }
+    var html = null;
+    for(var obj in data.sites){
+//        console.log(data.sites[obj].cinema)
+        html += "<tr><td>"+ data.sites[obj].cinema +"</td><td>"+ data.sites[obj].date +"</td><td>"  + data.sites[obj].quantity + "</td><td>" + data.sites[obj].address + "</td></tr>"
+    }
+    $("#tab").html(html)
 </script>
-
 </body>
 </html>
+<!--sheyude-->

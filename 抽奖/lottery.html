@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="no">
+<title>抽奖代码</title>
+
+<link rel="stylesheet" type="text/css" href="css/styleCJ.css"/>
+
+</head>
+<body>
+
+
+
+<div class="shanDeng" id="deng">
+	<div id="luck"><!-- luck -->
+		<table>
+			<tr>
+				<td class="luck-unit luck-unit-0"><img src="img/thanks.png" alt="感谢参与"></td>
+				<td class="luck-unit luck-unit-1"><img src="img/ipad.png" alt="ipad"></td>
+				<td class="luck-unit luck-unit-2"><img src="img/books.png" alt="金融书籍"></td>
+				<td class="luck-unit luck-unit-3"><img src="img/thanks.png" alt="感谢参与"></td>
+			</tr>
+			<tr>
+				<td class="luck-unit luck-unit-11"><img src="img/iphone.png" alt="iphone5c"></td>
+				<td rowspan="2" colspan="2" class="cjBtn" id="btn" title="点击抽奖"></td>
+				<td class="luck-unit luck-unit-4"><img src="img/bicycle.png" alt="山地自行车"></td>
+			</tr>
+			<tr>
+				<td class="luck-unit luck-unit-10"><img src="img/thanks.png" alt="谢谢参与"></td>
+				<td class="luck-unit luck-unit-5"><img src="img/teacher.png" alt="老师内参"></td>
+			</tr>
+			<tr>
+				<td class="luck-unit luck-unit-9"><img src="img/teacher.png" alt="老师内参"></td>
+				<td class="luck-unit luck-unit-8"><img src="img/Cups.png" alt="茶杯"></td>
+				<td class="luck-unit luck-unit-7"><img src="img/thanks.png" alt="感谢参与"></td>
+				<td class="luck-unit luck-unit-6"><img src="img/iphone.png" alt="iphone5c"></td>
+			</tr>
+		</table>
+	</div><!-- luckEnd -->
+</div>
+
+				<!--罩-->
+		<div class="shade"></div>
+		<!--点击保存弹框-->
+		<div class="newsBox newsBox1">
+			<p>提示信息 <span class="fr close">X</span></p>
+			<p>您的奖品为</p>
+			<p>请联系客服领奖品！</p>
+			<a href="#">确认</a>
+		</div>
+
+<div class="thanks">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/cookies.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var session = new Session(); // 进入页面函数
+	session.init(); // 初始化
+	var luck={
+		index:-1,	//当前转动到哪个位置，起点位置
+		count:0,	//总共有多少个位置
+		timer:0,	//setTimeout的ID，用clearTimeout清除
+		speed:20,	//初始转动速度
+		times:0,	//转动次数
+		cycle:50,	//转动基本次数：即至少需要转动多少次再进入抽奖环节
+		prize:-1,	//中奖位置
+		init:function(id){
+			if ($("#"+id).find(".luck-unit").length>0) {
+				$luck = $("#"+id);
+				$units = $luck.find(".luck-unit");
+				this.obj = $luck;
+				this.count = $units.length;
+				$luck.find(".luck-unit-"+this.index).addClass("active");
+			};
+		},
+
+		
+		roll:function(){
+			var index = this.index;   //商品的索引
+//			console.log(index)
+			var count = this.count;
+			//console.log(count)     //最后一个商品索引
+			var luck = this.obj;    //$("#luck")
+			//console.log(luck)    
+			$(luck).find(".luck-unit-"+index).removeClass("active");   //删除所有这个蓝色带标记边框的类名
+			index += 1;
+			if (index>count-1) {    //如果他的索引为最后一个，就让他变成第一个
+				index = 0;
+			};
+			$(luck).find(".luck-unit-"+index).addClass("active");     //增加这个选中的蓝色标记的类名
+			this.index=index;    //重新赋值索引
+			
+			return false;
+		},
+		stop:function(index){
+			this.prize=index;
+//			//当旋转停止的时候指中奖的位置
+			return false;
+		}
+	};
+
+
+	function roll(){
+		luck.times += 1;    //旋转次数++
+		luck.roll();
+		// console.log(luck.times)
+		if (luck.times > (luck.cycle+10) && luck.prize==luck.index) {    //如果旋转次数大于50+10次,且中奖位置等于起点位置上的话
+			clearTimeout(luck.timer);    //清楚定时器
+
+			$(".shade").show();    // 遮罩出现
+			$(".newsBox1").show();
+			var prizeName = $('.luck-unit-'+luck.prize).find("img").attr("alt");  // 找到当前的奖品的alt内容
+			console.log(prizeName)
+			$(".newsBox1 p").eq(1).html("您的奖品为 : " + prizeName + " !")   //然后弹框复制
+
+			luck.prize=-1;
+			luck.times=0;
+			click=false;
+		}else{
+			// console.log(luck.prize)
+			if (luck.times<luck.cycle) {
+				luck.speed -= 10;
+			}else if(luck.times==(luck.cycle)) {
+				
+				// var index = Math.random()*(luck.count)|0;
+				/*
+					0: 0-10，
+					1: 11-20，
+					2: 21-30,
+					3: 31,
+					4: 32,
+					5: 34-40,
+					6: 41-50,
+					7: 51-60,
+					8: 61-70,
+					9: 71-80,
+					10: 81-100,
+					11: 33,
+				 */
+				var index = 0;
+				var x = Math.floor(Math.random()*1000);
+				console.log(x)
+				if (x > -1 && x < 11) {
+					index = 0;
+				}
+				if (x > 10 && x < 21) {
+					index = 1;
+				}
+				if (x > 20 && x < 31) {
+					index = 2;
+				}
+				if (x > 33 && x < 41) {
+					index = 5;
+				}
+				if (x > 40 && x < 51) {
+					index = 6;
+				}
+				if (x > 50 && x < 61) {
+					index = 7;
+				}
+				if (x > 60 && x < 71) {
+					index = 8;
+				}
+				if (x > 70 && x < 81) {
+					index = 9;
+				}
+				if (x > 80 && x < 100) {
+					index = 10;
+				}
+				if (x == 31) {
+					index = 3;
+				}
+				if (x == 32) {
+					index = 4;
+				}
+				if (x == 33) {
+					index = 11;
+				}
+				// var index = Math.random()*(luck.count);
+				// index = 11;
+				console.log(index)
+				
+				luck.prize = index;	
+
+
+
+			}else{
+				if (luck.times > luck.cycle+10 && ((luck.prize==0 && luck.index==7) || luck.prize==luck.index+1)) {
+					luck.speed += 110;
+				}else{
+					luck.speed += 20;
+				}
+			}
+			if (luck.speed<40) {
+				luck.speed=40;
+			};
+
+			luck.timer = setTimeout(roll,luck.speed);
+			
+		}
+
+		return false;
+		
+	}
+
+
+//闪灯效果
+	var num = 0;
+	$(".shanDeng").attr("class",function(){
+		setInterval(function(){ 
+			num++;
+			if(num%2==0){
+				$('#deng').addClass("shanDeng2");
+			}else{
+				$('#deng').addClass("shanDeng");
+				$('#deng').removeClass('shanDeng2');
+			}
+		},500)
+	})
+
+
+	var click=false;
+	
+	window.onload=function(){     
+		luck.init('luck');
+		$("#btn").click(function(){
+//			点击一次删除一个
+//			这里需要调用session.getsum获取有没有次数
+            session.delsum()
+			//按下弹起效果
+			$("#btn").addClass("cjBtnDom");
+			setTimeout(function(){	
+				$("#btn").removeClass("cjBtnDom");
+			},200);
+
+			
+			if(click) {
+				return false;
+			}
+			else{
+				luck.speed=100;
+				roll();
+				click=true;
+				return false;
+			}
+		
+		});
+		
+		$(".close").click(function(){
+			$(".shade").hide();
+			$(".newsBox1").hide();
+		})
+		$(".newsBox1 a").click(function(){
+			$(".shade").hide();
+			$(".newsBox1").hide();
+		})
+	};
+</script>
+
+
+</body>
+</html>

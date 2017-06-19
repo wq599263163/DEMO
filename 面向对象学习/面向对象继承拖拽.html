@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Sheyude</title>
+    <style>
+        body{
+            margin:0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            border:1px solid #666;
+            background-color: blue;
+        }
+        #div1{
+            position: absolute;
+            left: 10px;
+            top:20px;
+        }
+        #div2{
+            position:absolute;
+            left: 220px;
+            top: 20px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<script>
+    // 复制对象，父类放后面
+    function copyObj(objA, objB){
+        for(var attr in objB){
+            objA[attr] = objB[attr];
+        };
+    };
+    window.onload = function(){
+        var d1 = new Drag("div1");
+        d1.init();
+
+        var d2 = new ChildDrag("div2");
+        d2.init();
+    };
+    function Drag(id){
+        this.obj =document.getElementById(id);
+        this.disX = 0;
+        this.disY = 0;
+        this.on = false;
+    };
+    Drag.prototype.init = function(){
+        var This = this;
+        //鼠标按下
+        this.obj.onmousedown = function(ev){
+            This.on = true;
+            var ev = ev || window.event;
+            This.fnDown(ev);
+            //拖动
+            document.onmousemove = function(ev){
+                var ev = ev || window.event;
+                if(This.on){
+                    This.fnMove(ev);
+                }
+            };
+            document.onmouseup = function(){
+                This.fnUp()
+            };
+            return false;
+        };
+    };
+    // 鼠标按下
+    Drag.prototype.fnDown = function(ev){
+        // 当前的鼠标点击位置减去div目前div距离左边和上边的位置
+        this.disX = ev.clientX - this.obj.offsetLeft;
+        this.disY = ev.clientY - this.obj.offsetTop;
+
+    };
+    //按键按下
+    Drag.prototype.fnMove = function(ev){
+        this.obj.style.left = ev.clientX - this.disX + "px";
+        this.obj.style.top = ev.clientY - this.disY + "px";
+    };
+    // 按键抬起
+    Drag.prototype.fnUp = function(){
+        this.on = false;
+    };
+
+    //子类
+    function ChildDrag(id){
+        Drag.call(this, id);
+    };
+    copyObj(ChildDrag.prototype, Drag.prototype);
+    ChildDrag.prototype.fnMove = function(ev){
+        var X = ev.clientX - this.disX;
+        var Y = ev.clientY - this.disY
+        console.log(X)
+        if(X <= 0)
+        this.obj.style.left = X + "px";
+        this.obj.style.top = Y + "px";
+    };
+</script>
+</body>
+</html>
+<!--sheyude-->

@@ -1,0 +1,130 @@
+body{
+
+		background: url(../img/bj.jpg) no-repeat 0 0;
+		/*background-repeat: no-repeat;*/
+		background-size: 100% 100%;
+	}
+	*{
+		margin-left: 0;padding-left: 0;
+	}
+	#title{
+		width: 560px;
+		height: 321px;
+		margin: 200px auto 0 auto;
+	}
+
+	.shanDeng,.shanDeng2{
+		width: 858px;
+		height: 858px;
+		background-size: 100%;
+		background-repeat: no-repeat;
+		margin: 88px auto 0 auto;
+	}
+
+	.shanDeng{
+		background-image: url(../img/shandeng1.png);
+	}
+	.shanDeng2{
+		background-image: url(../img/shandeng2.png);
+	}
+
+	#btn .cjBtnDom,#btn .cjBtn,.shanDeng .active,.shanDeng td{
+		width: 180px;
+		height: 180px;
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
+
+	#btn.cjBtn{
+		background-image: url(../img/buttonUp.png);
+	}
+	#btn.cjBtnDom{
+		background-image: url(../img/buttonDown.png);
+	}
+
+
+	#luck .active{
+		background-image: url(../img/active.png);
+	}
+	.shanDeng td{
+		text-align: center;
+		/*background-image: url(../img/proBj.png);*/
+	}
+	.shanDeng table{
+		padding-left: 63px;
+		padding-top: 63px;
+	}
+	.thanks{
+		text-align:center;
+		margin:40px 0; 
+		font:normal 14px/24px 'MicroSoft YaHei';
+	}
+	
+	.fr{
+		float: right;
+	}
+	a{
+		text-decoration: none;
+	}
+	
+/*点击确认弹框*/
+.newsBox{
+	 text-align: center;
+    margin: auto;
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 450px;
+    height: 200px;
+    background: #fff;
+    display: none;
+    
+    z-index: 3000000;
+}
+.newsBox p:first-child{
+	background: #f6f6f6;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    color: #424141;
+    border-bottom: 1px solid #ccc;
+    font-size: 15px;
+
+}
+.newsBox p:first-child span{
+	margin-right: 20px;
+	cursor: pointer;
+	
+}
+.newsBox p:nth-of-type(2){
+	margin-top: 25px;
+	color:#333;
+    font-size: 15px;
+    padding: 0 20px;
+
+}
+.newsBox a{
+    border: 0;
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 3px;
+    display: inline-block;
+    line-height: 40px;
+    margin-right: 7px;
+    background: #ff5b5a;
+}
+
+/*罩层*/
+.shade{
+	z-index: 5;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.8);
+}
