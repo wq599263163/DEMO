@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ch-ZN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height:200px;
+            width:200px;
+            border:1px solid #888;
+            background-color: #df3d2a;
+            margin-right:5px;
+            float: left;
+            position: absolute;
+        }
+        #div2{
+            left:220px;
+        }
+        #div3{
+            left:440px;
+        }
+        #div4{
+            left:660px;
+        }
+        p{
+            position: fixed;
+            bottom:0;
+            left:50%;
+            font-size: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+<!--<div id="div4"></div>-->
+<p id="p">窗口拖动组件开发</p>
+<script>
+    // 复制配置，默认放前面，需要覆盖的放后面
+    function copyObj(objA, objB){
+        for(var attr in objB){
+            objA[attr] = objB[attr];
+        };
+    };
+    window.onload = function(){
+        var d1 = new Drag();
+        d1.init({
+            id:"div1"
+        });
+
+        var d2 = new Drag();
+        d2.init({
+            id:"div2",
+            down:function (This) {
+                document.title = "test";
+                This.obj.style.backgroundColor = "blue";
+                This.obj.style.zIndex = "2";
+                document.getElementById("p").innerText = "按键按下！"
+            }
+        });
+
+        var d3 = new Drag();
+        d3.init({
+            id:"div3",
+            down:function (This) {
+                This.obj.style.backgroundColor = "#666";
+                This.obj.style.zIndex = "9999";
+                document.getElementById("p").innerText = "按键按下！"
+            },
+            up:function (This) {
+                This.obj.style.backgroundColor = "red";
+                This.obj.style.zIndex = "0"
+                document.getElementById("p").innerText = "按键弹起！！"
+            }
+        });
+    };
+    function Drag(){
+        this.obj =null;
+        this.disX = 0;
+        this.disY = 0;
+        this.on = false;
+//        默认配置文件
+        this.set = {
+            down:function () {
+                console.log("按下未配置，使用默认参数！")
+            },
+            up:function(){
+                console.log("弹起未配置，使用默认参数！")
+            },
+        }
+    };
+    /**
+     *  初始化
+     * @param opt object 里面id必传入
+     */
+    Drag.prototype.init = function(opt){
+        copyObj(this.set, opt);
+        this.obj = document.getElementById(this.set.id);
+        // 执行组件函数
+
+        var This = this;
+        //鼠标按下
+        this.obj.onmousedown = function(ev){
+            This.set.down(This);
+            This.on = true;
+            var ev = ev || window.event;
+            This.fnDown(ev);
+            //拖动
+            document.onmousemove = function(ev){
+                var ev = ev || window.event;
+                if(This.on){
+                    This.fnMove(ev);
+                }
+            };
+            document.onmouseup = function(){
+                This.fnUp()
+                // 默认是执行
+                This.set.up(This);
+            };
+            return false;
+        };
+    };
+    // 鼠标按下
+    Drag.prototype.fnDown = function(ev){
+        // 当前的鼠标点击位置减去div目前div距离左边和上边的位置
+        this.disX = ev.clientX - this.obj.offsetLeft;
+        this.disY = ev.clientY - this.obj.offsetTop;
+
+    };
+    //按键按下
+    Drag.prototype.fnMove = function(ev){
+        this.obj.style.left = ev.clientX - this.disX + "px";
+        this.obj.style.top = ev.clientY - this.disY + "px";
+    };
+    // 按键抬起
+    Drag.prototype.fnUp = function(){
+        this.on = false;
+    };
+</script>
+</body>
+</html>

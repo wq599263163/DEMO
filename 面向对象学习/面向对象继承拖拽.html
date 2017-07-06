@@ -91,6 +91,7 @@
         Drag.call(this, id);
     };
     copyObj(ChildDrag.prototype, Drag.prototype);
+    // 子类改写父类的fnMove 方法
     ChildDrag.prototype.fnMove = function(ev){
         var X = ev.clientX - this.disX;
         var Y = ev.clientY - this.disY

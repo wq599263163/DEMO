@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ch-ZN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../模拟JQ选择器和常用方法/My-Jquery.js"></script>
+
+</head>
+<body>
+<div id="div"></div>
+<script>
+    $()
+    window.onload =function () {
+        var html = document.createElement("script")
+        html.src = "test.js"
+        function test(html,fn) {
+            document.getElementById("div").appendChild(html);
+            fn();
+        }
+        test(html,function () {
+            setTimeout(function () {
+//                console.log(main())
+                var data = main()
+//                console.log(data.sites.length)
+//                es6 语法
+                for(d of data.sites){
+                    console.log(d.address)
+                }
+            },1000)
+        })
+    }
+
+</script>
+</body>
+</html>

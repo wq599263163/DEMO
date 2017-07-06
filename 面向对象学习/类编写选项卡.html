@@ -119,10 +119,11 @@
     window.onload = function(){
         var tab = new Tab("div1");
         tab.init();
+                tab.autoPlay();
 
         var tab2 = new Tab("div2");
         tab2.init();
-        tab2.autoPlay();
+//        tab2.autoPlay();
     }
 
     function Tab(id){
@@ -130,6 +131,7 @@
         this.oButton = this.Div.getElementsByTagName("button");
         this.oDiv = this.Div.getElementsByTagName("div");
         this.index = 0;
+
     }
     // 挂载原型链
     Tab.prototype.init = function(){
@@ -139,6 +141,7 @@
             this.oButton[i].onclick = function(){
                 // 修改this指向
                 This.inputClick(this);
+                console.log(this)
             };
 
         }

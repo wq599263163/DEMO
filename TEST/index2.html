@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ch-ZN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div">111</div>
+<script>
+
+    function xx() {
+        var a = 1
+
+        return function () {
+            a++
+            alert(a)
+        }
+    }
+    var x = xx()
+    console.log(a)
+    x()
+    x()
+    x()
+
+
+
+//    console.log(a)
+</script>
+</body>
+</html>

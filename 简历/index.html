@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>一只萌萌哒前端汪</title>
+    <script type="text/javascript">
+        (function () {
+            function remSize() {
+                let sw = document.documentElement.clientWidth;
+                document.documentElement.style.fontSize = Math.floor(sw / 4.14) + 'px';
+            }
+            window.onresize = remSize;
+            window.onload = remSize;
+            window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function () {
+                let sw = document.documentElement.clientWidth;
+                var angle = window.screen.orientation.angle || window.orientation;
+                if (sw < 769 && (angle === 90 || angle === -90)) {
+                    alert("竖屏浏览体验更佳，亦可使用PC");
+                }
+            });
+        })();
+    </script>
+    <link rel="stylesheet" type="text/css" href="cv/css/main.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="container">
+            <div class="column page1 on">
+                <img class="bg1" src="cv/images/headimg.jpg">
+                <div class="mouse-tips down iconfont icon-down"></div>
+                <div class="bg-black">
+                    <div class="title tit1">
+                        <h2>Fuck The World</h2>
+                        <p>追风少年 个人简历</p>
+                        <p>发条技师</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column page2">
+                <h2 class="title tit2">项目经验</h2>
+                <div class="content">
+                    <div class="project pro1">
+                        <div class="pro-img">
+                            <div class="iconfont icon-oGDwRZJ01"></div>
+                        </div>
+                        <div class="pro-txt">
+                            <h3>vue.js问卷管理单页应用(PC)</h3>
+                            <p>可以根据需求创建问卷，同样可以保存、填写问卷，问卷数据以图表统计的方式呈现出来。</p>
+                        </div>
+                        <div class="pro-btn">
+                            <a class="pro-link" href="http://win5do.cc/jianqn" target="_blank">LiveDemo</a>
+                            <a class="pro-link" href="https://github.com/win5do/IFE/tree/master/task50-vue-questionnaire#readme" target="_blank">项目心得</a>
+                        </div>
+                    </div>
+                    <div class="project pro2">
+                        <div class="pro-img">
+                            <div class="iconfont icon-jquery-copy"></div>
+                        </div>
+                        <div class="pro-txt">
+                            <h3>基于jquery或zepto滚动插件</h3>
+                            <p>可用于fullpage页面和轮播，并且能够嵌套多个滚动框架，有竖直和横向滚动两种模式，可以自定义动画时间以及导航栏。</p>
+                        </div>
+                        <div class="pro-btn">
+                            <a class="pro-link" href="https://win5do.github.io/gun.js/" target="_blank">LiveDemo</a>
+                            <a class="pro-link" href="https://github.com/win5do/gun.js" target="_blank">项目心得</a>
+                        </div>
+                    </div>
+                    <div class="project pro3">
+                        <div class="pro-img">
+                            <div class="iconfont icon-react"></div>
+                        </div>
+                        <div class="pro-txt">
+                            <h3>react制作的电影墙页面(PC)</h3>
+                            <p>将图片随机散落在桌面上，将电影短评写在图片反面，点击其一可重新随机布局，是不是很文艺呢？</p>
+                        </div>
+                        <div class="pro-btn">
+                            <a class="pro-link" href="http://win5do.cc/photowall" target="_blank">LiveDemo</a>
+                            <a class="pro-link" href="https://github.com/win5do/imooc/tree/master/react-photoWall#readme" target="_blank">项目心得</a>
+                        </div>
+                    </div>
+                    <div class="project pro4">
+                        <div class="pro-img">
+                            <div class="iconfont icon-css"></div>
+                        </div>
+                        <div class="pro-txt">
+                            <h3>自行设计的响应式简历(双端)</h3>
+                            <p>就是这个页面啦，兼容pc和移动端鼠标、键盘和触摸操作，自适应多尺寸屏幕。看看动画就好不要在意配色了。</p>
+                        </div>
+                        <div class="pro-btn">
+                            <a class="pro-link" href="http://win5do.cc" target="_blank">LiveDemo</a>
+                            <a class="pro-link" href="https://github.com/win5do/imooc/tree/master/CV#readme" target="_blank">项目心得</a>
+                        </div>
+                    </div>
+                    <div class="project pro5">
+                        <div class="pro-img">
+                            <div class="iconfont icon-jquery-copy"></div>
+                        </div>
+                        <div class="pro-txt">
+                            <h3>fullpage专题页面(双端)</h3>
+                            <p>全屏滚动，css3动画，弹幕，视频，pc及mobile双端这里都有哦，点开LiveDemo看看吧！</p>
+                        </div>
+                        <div class="pro-btn">
+                            <a class="pro-link" href="http://win5do.cc/xx2" target="_blank">LiveDemo</a>
+                            <a class="pro-link" href="https://github.com/win5do/imooc/tree/master/xx2.ztgame.com#readme" target="_blank">项目心得</a>
+                        </div>
+                    </div>
+                    <div class="project pro6">
+                        <div class="pro-img">
+                            <div class="iconfont icon-nodejs"></div>
+                        </div>
+                        <div class="pro-txt">
+                            <h3>node.js网络小爬虫</h3>
+                            <p>学习nodejs时写的一个网页爬虫，爬取慕课网上的课程信息，根据学习人数排序输出，并保存至json文件中。</p>
+                        </div>
+                        <div class="pro-btn">
+                            <a class="pro-link" href="https://github.com/win5do/imooc/blob/master/nodejs%20study/http/savebyfs.js" target="_blank">LiveDemo</a>
+                            <a class="pro-link" href="https://github.com/win5do/imooc/tree/master/nodejs%20study/http#readme" target="_blank">项目心得</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column page3">
+                <h2 class="title tit3">前端技能</h2>
+                <div class="content">
+                    <div class="skill skill1">
+                        <div class="front">
+                            <h5 class="skill-title">熟练掌握</h5>
+                            <p><span class="skill-point">HTML(5)</span></p>
+                            <p><span class="skill-point">CSS(3)</span></p>
+                            <p><span class="skill-point">photoShop</span></p>
+                            <p><span class="skill-point">Sass</span></p>
+                        </div>
+                        <div class="backface">
+                            能熟练使用photoshop完成基本的图像处理，用html和css还原设计稿。各种居中、浮动、定位都调教过，熟悉移动端多尺寸适配以及响应式布局，能运用scss预处理css。
+                        </div>
+                    </div>
+                    <div class="skill skill2">
+                        <div class="front">
+                            <h5 class="skill-title">基本掌握</h5>
+                            <p><span class="skill-point">JavaScript</span></p>
+                            <p><span class="skill-point">jQuery</span></p>
+                            <p><span class="skill-point">Zepto</span></p>
+                            <p><span class="skill-point">Bootstrap</span></p>
+                            <p><span class="skill-point">Es6</span></p>
+                        </div>
+                        <div class="backface">
+                            熟悉原生js、jquery、zepto等框架及相关插件，常见的动画、交互基本能实现。拥有了良好的代码书写规范，注释清晰，简洁易读，对mvc、mvvm框架，commomjs规范，模块化，以及es6有一定的了解。
+                        </div>
+                    </div>
+                    <div class="skill skill3">
+                        <div class="front">
+                            <h5 class="skill-title">基本应用</h5>
+                            <p><span class="skill-point">Vue.js</span></p>
+                            <p><span class="skill-point">React</span></p>
+                            <p><span class="skill-point">Webpack</span></p>
+                            <p><span class="skill-point">Npm</span></p>
+                        </div>
+                        <div class="backface">
+                            学习过2016前端热门的三大技术—vue、react、webpack，能够基本运用，使用vue和react写了一些demo，学会了使用webpack作为构建工具，eslint规范格式，npm进行包管理。
+                        </div>
+                    </div>
+                    <div class="skill skill4">
+                        <div class="front">
+                            <h5 class="skill-title">开发工具</h5>
+                            <p><span class="skill-point">VSCode</span></p>
+                            <p><span class="skill-point">Koala</span></p>
+                            <p><span class="skill-point">Chrome</span></p>
+                            <p><span class="skill-point">Git</span></p>
+                            <p><span class="skill-point">ShadowSocks</span></p>
+                        </div>
+                        <div class="backface">
+                            常用的编辑器是微软的VSCode；能熟练运用Chrome调整css、调试debug；koala用来编译scss，压缩js，自动添加prefix；ShadowSocks用来翻墙看世界；使用git命令配合github等代码库进行版本控制。
+                        </div>
+                    </div>
+                    <div class="skill skill5">
+                        <div class="front">
+                            <h5 class="skill-title">常用插件</h5>
+                            <p><span class="skill-point">Swiper</span></p>
+                            <p><span class="skill-point">Animate.css</span></p>
+                            <p><span class="skill-point">Echarts</span></p>
+                            <p><span class="skill-point">Sortable</span></p>
+                            <p><span class="skill-point">PickaDate</span></p>
+                        </div>
+                        <div class="backface">
+                            在这个开源形势一片大好的时代，大神的轮子自然用过不少，列几个常用的差距。swiper：超顺滑的轮播及滑动；动画的贝塞尔曲线太难折腾了，还是用Animate.css吧；用sotrtable搞定拽排序……宛如一个github搬运工了。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column page4">
+                <h2 class="title tit4">个人经历</h2>
+                <div class="content">
+                    <div class="history his1">
+                        <div class="year">EXP1</div>
+                        <dl class="intro">
+                            <dt class="company">网瘾少年</dt>
+                            <dt>2008.9 - 2011.6</dt>
+                            <dt class="job">high school</dt>
+                            <dd>通宵打dota</dd>
+                            <dd>从第一打到倒数第一</dd>
+                            <dd>然后回不去了</dd>
+                            <dd>dota也打的很菜</dd>
+                        </dl>
+                    </div>
+                    <div class="history his2">
+                        <div class="year">EXP2</div>
+                        <dl class="intro">
+                            <dt class="company">迷茫屌丝</dt>
+                            <dt>2011.9 - 2015.7</dt>
+                            <dt class="job">loser</dt>
+                            <dd>睡觉上课打dota</dd>
+                            <dd>没挂过科</dd>
+                            <dd>没有女票</dd>
+                            <dd>没好好玩也没好好学</dd>
+                        </dl>
+                    </div>
+                    <div class="history his3 cur">
+                        <div class="year">EXP3</div>
+                        <dl class="intro">
+                            <dt class="company">XX会所吹逼技师</dt>
+                            <dt>2015.9 - 2020</dt>
+                            <dt class="job">himma</dt>
+                            <dd>吹吹更健康</dd>
+                            <dd>退役dotaer</dd>
+                            <dd>喜欢讲道理</dd>
+                            <dd>开始看书了</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="column page5">
+                <div class="content">
+                    <div class="end end1">追求代码的简洁易读</div>
+                    <div class="end end2">善于学习并解决问题</div>
+                    <div class="end end3">对新技术好奇但理智</div>
+                    <div class="end end4">我是你要找的前端吗</div>
+                    <div class="end end5">去了解更多</div>
+                    <div class="end end6">
+                        <a class="iconfont icon-github" href="https://github.com/win5do" target="_blank"></a>
+                        <a class="iconfont icon-linkedin" href="http://www.google.com" target="_blank"></a>
+                    </div>
+                </div>
+                <div class="mouse-tips up iconfont icon-down"></div>
+                <div class="footer">Copyright©2017 &nbsp;&nbsp;&nbsp;All Rights Reserved &nbsp;&nbsp;&nbsp;Design by win5do
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--wrap end-->
+    <!--右侧导航按钮-->
+    <ul class="nav-right">
+        <!--标签换行会使图标居中失效-->
+        <li class="item iconfont icon-shouye on"><span>首页</span></li>
+        <li class="item iconfont icon-daima"><span>项目</span></li>
+        <li class="item iconfont icon-zhandou"><span>技能</span></li>
+        <li class="item iconfont icon-inauguration"><span>经历</span></li>
+        <li class="item iconfont icon-mianshi"><span>联系</span></li>
+        <li class="item info-tg2 iconfont icon-hire"><span>信息</span></li>
+    </ul>
+    <!--导航按钮 end-->
+    <!--左侧信息弹出层-->
+    <div class="info">
+        <div class="info-tg ">
+            <div class="info-arrow iconfont icon-qianjin"></div>
+        </div>
+        <div class="info-box">
+            <div href="" class="avatar"><img src="cv/images/avatar.jpg" alt="avatar"></div>
+            <ul class="info-ul">
+                <li class="info-li">
+                    <h3>NAME</h3>
+                    <p>风一样的男人</p>
+                </li>
+                <li class="info-li">
+                    <h3>PERSONAL</h3>
+                    <p>男 28岁</p>
+                </li>
+                <li class="info-li">
+                    <h3>JOB</h3>
+                    <p>高级吹逼技师</p>
+                </li>
+                <li class="info-li">
+                    <h3>EDU</h3>
+                    <p>吹逼技术研修院</p>
+                </li>
+                <li class="info-li">
+                    <h3>CONTACT</h3>
+                    <p>1855555</p>
+                    <p>55555@qq.com</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--信息层 end-->
+    <!--<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>-->
+    <script src="http://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+    <!--<script src="F:\code\libs\zepto.min.js"></script>-->
+    <script src="cv/js/main.js"></script>
+</body>
+
+</html>

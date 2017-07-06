@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ch-ZN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="请求" id="input">
+<input type="button" value="请求2" id="input20">
+<form action="" id="form1" enctype="application/x-www-form-urlencoded">
+    <input type="text" name="input1" id="input1">x <input type="text" name="input2" id="input2"> = <span id="span"></span><input type="button" value="计算" id="sub">
+</form>
+<script src="ajax.js"></script>
+<script>
+    var btn = document.getElementById("input");
+    var btn2 = document.getElementById("sub");
+
+    console.log(AJAX)
+    btn.onclick = function () {
+        var ajax = new AJAX({
+            url:"http://127.0.0.1:5050/jsTest",
+            type:"get",
+            dataType:"json",
+            success:function (msg) {
+                console.log(msg)
+            }
+
+        })
+    }
+    btn2.onclick = function () {
+        var input = document.getElementById("input1")
+        var input2 = document.getElementById("input2")
+        var ajax = new AJAX({
+            url:"http://127.0.0.1:5050/jisuan",
+            type:"post",
+//            data:{
+//                input:input.value,
+//                inout2:input2.value,
+//            },
+            data:"input1=11",
+            dataType:"json",
+            success:function (msg) {
+                console.log(msg)
+//                var span = document.getElementById("span").innerText = msg.sum;
+            }
+
+        })
+    }
+
+//    "inout=test&input2=test2"
+</script>
+</body>
+</html>
